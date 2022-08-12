@@ -15,7 +15,7 @@ export class Modals {
     this._settings = settings;
     this._preventDefault = this._settings[this._settingKey].preventDefault;
     this._stopPlay = this._settings[this._settingKey].stopPlay;
-    this._lockFocus = this._settings[this._settingKey].lockFocus;
+    // this._lockFocus = this._settings[this._settingKey].lockFocus;
     this._startFocus = this._settings[this._settingKey].startFocus;
     this._focusBack = this._settings[this._settingKey].focusBack;
     this._eventTimeout = this._settings[this._settingKey].eventTimeout;
