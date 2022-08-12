@@ -1,0 +1,33 @@
+.aside-info a {
+  display: block;
+  min-width: 160px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  padding: 9px 15px 12px 15px;
+  border: 2px solid $color-default-white;
+  font-size: $fz-small;
+  line-height: $lh-normal;
+  font-weight: $fw-bold;
+  font-family: $ff-roboto;
+  text-transform: uppercase;
+  letter-spacing: $ls-medium;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  touch-action: manipulation;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    color: $color-deep-sky-blue;
+    border-color: $color-deep-sky-blue;
+  }
+
+  &:active {
+    opacity: 0.5;
+  }
+
+  @include vp-1023 {
+    display: none;
+  }
+}

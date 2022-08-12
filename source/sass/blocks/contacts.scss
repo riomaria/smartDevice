@@ -1,0 +1,70 @@
+.contacts {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  justify-content: space-between;
+  max-width: 49%;
+  min-width: 40%;
+
+  @include vp-1023 {
+    justify-content: flex-end;
+    max-width: 55%;
+    min-width: 40px;
+    margin-right: 0;
+  }
+
+  @include vp-767 {
+    max-width: 70%;
+  }
+}
+
+.contacts a {
+  flex: 0 1 auto;
+  display: flex;
+  padding: 15px 0;
+  padding-left: 2px;
+  margin-right: 27px;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    color: $color-deep-sky-blue;
+  }
+
+  &:active {
+    color: $color-deep-sky-blue;
+    opacity: 0.5;
+  }
+
+  @include vp-1023 {
+    padding: 10px;
+    margin-right: 20px;
+  }
+
+  @include vp-767 {
+    margin: 0 10px;
+  }
+}
+
+.contacts span {
+  order: 1;
+  display: block;
+  line-height: $lh-pre-modarate;
+
+  @include vp-1023 {
+    display: none;
+  }
+}
+
+.contacts svg {
+  width: 20px;
+  height: 20px;
+
+  margin-right: 15px;
+  fill: $color-deep-sky-blue;
+
+  @include vp-1023 {
+    margin-right: 0;
+  }
+}

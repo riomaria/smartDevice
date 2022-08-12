@@ -1,0 +1,123 @@
+.product {
+  position: relative;
+  min-height: 650px;
+  padding: 48px 40px 70px 40px;
+
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+    background-color: $color-default-black;
+    opacity: 0.5;
+  }
+
+  &:hover::after,
+  &:focus-within::after {
+    opacity: 0.3;
+  }
+
+  &:active::after {
+    opacity: 0.1;
+  }
+
+  @include vp-1023 {
+    min-height: 250px;
+    padding: 36px 45px;
+  }
+
+  @include vp-767 {
+    padding: 25px 30px 50px 30px;
+  }
+}
+
+.product > a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.product h2 {
+  position: relative;
+  max-width: 170px;
+  margin: 0;
+  padding: 0;
+  font-weight: $fw-normal;
+  font-size: $fz-pre-interium;
+  line-height: $lh-pre-big;
+  font-family: $ff-roboto;
+  color: $color-white;
+  z-index: 2;
+
+  @include vp-1023 {
+    max-width: 150px;
+  }
+
+  @include vp-767 {
+    max-width: 64%;
+    font-size: $fz-modarate;
+    line-height: $lh-pre-big;
+  }
+}
+
+.product__inner div {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  background-color: $color-deep-sky-blue;
+  border-radius: 3px;
+  z-index: 6;
+
+  @include vp-767 {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.product__inner svg {
+  position: absolute;
+  top: 51%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 5px;
+  height: 10px;
+  stroke: $color-white;
+  fill: transparent;
+
+  @include vp-1023 {
+    top: 49%;
+    left: 52%;
+  }
+
+  @include vp-767 {
+    top: 48%;
+    left: 53%;
+    width: 3px;
+    height: 8px;
+  }
+}
+
+.product img {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-color: $color-whisper;
+
+  @include vp-767 {
+    object-position: center;
+  }
+}

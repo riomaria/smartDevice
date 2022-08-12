@@ -15,9 +15,9 @@ html {
   font-style: normal;
   font-weight: 400;
   font-size: $fz-default;
-  line-height: 24px;
-  font-family: $ff-placeholder;
-  color: $color-default-black;
+  line-height: $lh-default;
+  font-family: $ff-mono;
+  color: $color-default-white;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -25,17 +25,31 @@ html {
   text-rendering: optimizeLegibility;
   // если по прежнему есть проблемы с выравниванием
   // https://transfonter.org/ - включите настройку https://prnt.sc/12rnt6g и переконвертируйте шрифт
+
+  // PP
+  // background-repeat: no-repeat;
+  // background-position: 50% 0;
+  // background-image: url("../../img/PP/320.jpg");
+
+  // @media (min-width: 768px) {
+  //   background-image: url("../../img/PP/770.jpg");
+  // }
+
+  // @media (min-width: 1024px) {
+  //   background-image: url("../../img/PP/1920.jpg");
+  // }
 }
 
 body {
   width: 100%;
   height: 100%;
-
   background-color: $color-default-white;
+  //PP
+  // opacity: 0.5;
 }
 
 a {
-  color: $color-default-black;
+  color: $color-default-white;
   text-decoration: none;
 }
 
