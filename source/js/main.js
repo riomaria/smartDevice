@@ -15,23 +15,12 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const inputModal = document.querySelector('.modal__form input');
   const popupButton = document.querySelector('.aside-info a');
-  const fixBlock = document.querySelector('.fix-block');
-
 
   popupButton.addEventListener('click', (evt) => {
     evt.preventDefault();
+
     inputModal.focus();
-
-    const paddingOffset = window.innerWidth - document.body.offsetWidth + 'px';
-    document.body.style.paddingRight = paddingOffset;
-
-    fixBlock.style.paddingRight = paddingOffset;
-
   });
-
-  document.body.style.paddingRight = 0;
-
-  fixBlock.style.paddingRight = 0;
 
   // ---------------------------------
   // Submit default
