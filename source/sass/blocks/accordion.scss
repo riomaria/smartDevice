@@ -152,6 +152,10 @@
   }
 }
 
+.accordion__toggle[data-nojs="no-js"] {
+  display: none;
+}
+
 .accordion__toggle:hover svg,
 .accordion__toggle:focus svg {
   @include vp-767 {

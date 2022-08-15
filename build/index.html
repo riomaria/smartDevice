@@ -20,7 +20,7 @@
   </head>
   <body>
     <div class="wrapper">
-      <header class="main-header">
+      <header class="main-header" data-fix-block>
         <div class="container main-header__inner">
           <a class="main-header__logo logo-header">
             <svg class="logo-header__svg" width="215" height="55" aria-hidden="true" focusable="false">
@@ -43,7 +43,7 @@
             </a>
           </div>
           <div class="main-header__aside aside-info">
-            <a href="#" data-open-modal="feedback">Заказать звонок</a>
+            <a href="#feedbackForm" data-open-modal="popup-feedback">Заказать звонок</a>
           </div>
         </div>
       </header>
@@ -58,10 +58,22 @@
             </a>
           </div>
           <picture>
-            <source type="image/webp" media="(max-width: 767px)" srcset="./img/hero/hero-mobile.webp 1x, ./img/hero/hero-mobile@2x.webp 2x">
-            <source type="image/webp" media="(max-width: 1023px)" srcset="./img/hero/hero-tablet.webp 1x, ./img/hero/hero-tablet@2x.webp 2x">
-            <source type="image/webp" srcset="./img/hero/hero-desk.webp 1x, ./img/hero/hero-desk@2x.webp 2x">
             <!-- mobile: 1x - 320px; 2x - 640px; tablet: 1x - 770px; 2x - 1540px  desktop: 1x - 1920px; 2x - 3820px  -->
+            <source type="image/webp" srcset="
+              ./img/hero/hero-mobile.webp 320w,
+              ./img/hero/hero-mobile@2x.webp 640w,
+              ./img/hero/hero-tablet.webp 770w,
+              ./img/hero/hero-tablet@2x.webp 1540w,
+              ./img/hero/hero-desk.webp 1920w,
+              ./img/hero/hero-desk@2x.webp 3820w
+            " sizes="
+              (min-width: 1024px) 1920px,
+              ((min-width: 1024px) and (min-resolution: 2dppx)) 3820px,
+              (min-width: 768px) 770px,
+              ((min-width: 768px) and (min-resolution: 2dppx)) 1540px,
+              (max-width: 767px) 320px,
+              ((max-width: 767px) and (min-resolution: 2dppx)) 640px
+            ">
             <img srcset="
               ./img/hero/hero-mobile.jpg 320w,
               ./img/hero/hero-mobile@2x.jpg 640w,
@@ -123,7 +135,7 @@
               <p>Smart Device&nbsp;&mdash; это команда профессионалов. Через нас прошло более 1&nbsp;000&nbsp;000&nbsp;клиентов, 70% из&nbsp;которых продолжают сотрудничество по&nbsp;сей день. На&nbsp;данный момент насчитывается более 14&nbsp;офисов по&nbsp;всей стране и&nbsp;20&nbsp;городов присутствия.</p>
               <p>Мы&nbsp;стремимся к&nbsp;постоянному развитию и&nbsp;повышению уровня качества продукции, производимой внутри компании. Использование инновационных технологий помогает экономить деньги и&nbsp;время наших клиентов.</p>
             </div>
-            <button type="button">Подробнее</button>
+            <button type="button" data-nojs="no-js">Подробнее</button>
             <picture>
               <source type="image/webp" srcset="./img/company/company.webp 1x, ./img/company/company@2x.webp 2x">
               <!-- 1x - 150px; 2x - 300px;  -->
@@ -135,107 +147,137 @@
           <div class="container catalog__inner">
             <h2>Товары и&nbsp;услуги Smart Device</h2>
             <ul>
-              <li>
-                <article class="product">
-                  <h2>Производство печатных плат</h2>
-                  <a href="#" aria-label="Перейти на страницу"></a>
-                  <div class="product__inner">
-                    <div>
-                      <svg width="5" height="10">
-                        <use xlink:href="./img/sprite_auto.svg#icon-more"></use>
-                      </svg>
-                    </div>
+              <li class="catalog__item product">
+                <h2>Производство печатных плат</h2>
+                <a href="#" aria-label="Перейти на страницу"></a>
+                <div class="product__inner">
+                  <div>
+                    <svg width="5" height="10">
+                      <use xlink:href="./img/sprite_auto.svg#icon-more"></use>
+                    </svg>
                   </div>
-                  <picture>
-                    <source type="image/webp" media="(max-width: 767px)" srcset="./img/catalog/production-mobile.webp 1x, ./img/catalog/production-mobile@2x.webp 2x">
-                    <source type="image/webp" media="(max-width: 1023px)" srcset="./img/catalog/production-tablet.webp 1x, ./img/catalog/production-tablet@2x.webp 2x">
-                    <source type="image/webp" srcset="./img/catalog/production-desk.webp 1x, ./img/catalog/production-desk@2x.webp 2x">
-                    <!-- mobile: 1x - 270px; 2x - 540px; tablet: 1x - 670px; 2x - 1340px  desktop: 1x - 350px; 2x - 700px  -->
-                    <img srcset="
-                      ./img/catalog/production-mobile.jpg 270w,
-                      ./img/catalog/production-mobile@2x.jpg 540w,
-                      ./img/catalog/production-tablet.jpg 670w,
-                      ./img/catalog/production-tablet@2x.jpg 1340w,
-                      ./img/catalog/production-desk.jpg 350w,
-                      ./img/catalog/production-desk@2x.jpg 700w
-                    " sizes="
-                      (min-width: 1024px) 350px,
-                      ((min-width: 1024px) and (min-resolution: 2dppx)) 700px,
-                      (min-width: 768px) 670px,
-                      ((min-width: 768px) and (min-resolution: 2dppx)) 1340px,
-                      (max-width: 767px) 270px,
-                      ((max-width: 767px) and (min-resolution: 2dppx)) 540px
-                    " src="./img/catalog/production-desk.jpg" width="350" height="650" loading="lazy" alt="Секция печатной платы.">
-                  </picture>
-                </article>
+                </div>
+                <picture>
+                  <!-- mobile: 1x - 270px; 2x - 540px; tablet: 1x - 670px; 2x - 1340px  desktop: 1x - 350px; 2x - 700px  -->
+                  <source type="image/webp" srcset="
+                    ./img/catalog/production-mobile.webp 270w,
+                    ./img/catalog/production-mobile@2x.webp 540w,
+                    ./img/catalog/production-tablet.webp 670w,
+                    ./img/catalog/production-tablet@2x.webp 1340w,
+                    ./img/catalog/production-desk.webp 350w,
+                    ./img/catalog/production-desk@2x.webp 700w
+                  " sizes="
+                    (min-width: 1024px) 350px,
+                    ((min-width: 1024px) and (min-resolution: 2dppx)) 700px,
+                    (min-width: 768px) 670px,
+                    ((min-width: 768px) and (min-resolution: 2dppx)) 1340px,
+                    (max-width: 767px) 270px,
+                    ((max-width: 767px) and (min-resolution: 2dppx)) 540px
+                  ">
+                  <img srcset="
+                    ./img/catalog/production-mobile.jpg 270w,
+                    ./img/catalog/production-mobile@2x.jpg 540w,
+                    ./img/catalog/production-tablet.jpg 670w,
+                    ./img/catalog/production-tablet@2x.jpg 1340w,
+                    ./img/catalog/production-desk.jpg 350w,
+                    ./img/catalog/production-desk@2x.jpg 700w
+                  " sizes="
+                    (min-width: 1024px) 350px,
+                    ((min-width: 1024px) and (min-resolution: 2dppx)) 700px,
+                    (min-width: 768px) 670px,
+                    ((min-width: 768px) and (min-resolution: 2dppx)) 1340px,
+                    (max-width: 767px) 270px,
+                    ((max-width: 767px) and (min-resolution: 2dppx)) 540px
+                  " src="./img/catalog/production-desk.jpg" width="350" height="650" loading="lazy" alt="Секция печатной платы.">
+                </picture>
               </li>
-              <li>
-                <article class="product">
-                  <h2>Монтаж печатных плат</h2>
-                  <a href="#" aria-label="Перейти на страницу"></a>
-                  <div class="product__inner">
-                    <div>
-                      <svg width="5" height="10">
-                        <use xlink:href="./img/sprite_auto.svg#icon-more"></use>
-                      </svg>
-                    </div>
+              <li class="catalog__item product">
+                <h2>Монтаж печатных плат</h2>
+                <a href="#" aria-label="Перейти на страницу"></a>
+                <div class="product__inner">
+                  <div>
+                    <svg width="5" height="10">
+                      <use xlink:href="./img/sprite_auto.svg#icon-more"></use>
+                    </svg>
                   </div>
-                  <picture>
-                    <source type="image/webp" media="(max-width: 767px)" srcset="./img/catalog/montage-mobile.webp 1x, ./img/catalog/montage-mobile@2x.webp 2x">
-                    <source type="image/webp" media="(max-width: 1023px)" srcset="./img/catalog/montage-tablet.webp 1x, ./img/catalog/montage-tablet@2x.webp 2x">
-                    <source type="image/webp" srcset="./img/catalog/montage-desk.webp 1x, ./img/catalog/montage-desk@2x.webp 2x">
-                    <!-- mobile: 1x - 270px; 2x - 540px; tablet: 1x - 670px; 2x - 1340px  desktop: 1x - 350px; 2x - 700px  -->
-                    <img srcset="
-                      ./img/catalog/montage-mobile.jpg 270w,
-                      ./img/catalog/montage-mobile@2x.jpg 540w,
-                      ./img/catalog/montage-tablet.jpg 670w,
-                      ./img/catalog/montage-tablet@2x.jpg 1340w,
-                      ./img/catalog/montage-desk.jpg 350w,
-                      ./img/catalog/montage-desk@2x.jpg 700w
-                    " sizes="
-                      (min-width: 1024px) 350px,
-                      ((min-width: 1024px) and (min-resolution: 2dppx)) 700px,
-                      (min-width: 768px) 670px,
-                      ((min-width: 768px) and (min-resolution: 2dppx)) 1340px,
-                      (max-width: 767px) 270px,
-                      ((max-width: 767px) and (min-resolution: 2dppx)) 540px
-                    " src="./img/catalog/montage-desk.jpg" width="350" height="650" loading="lazy" alt="Центральная часть печатной платы.">
-                  </picture>
-                </article>
+                </div>
+                <picture>
+                  <!-- mobile: 1x - 270px; 2x - 540px; tablet: 1x - 670px; 2x - 1340px  desktop: 1x - 350px; 2x - 700px  -->
+                  <source type="image/webp" srcset="
+                    ./img/catalog/montage-mobile.webp 270w,
+                    ./img/catalog/montage-mobile@2x.webp 540w,
+                    ./img/catalog/montage-tablet.webp 670w,
+                    ./img/catalog/montage-tablet@2x.webp 1340w,
+                    ./img/catalog/montage-desk.webp 350w,
+                    ./img/catalog/montage-desk@2x.webp 700w
+                  " sizes="
+                    (min-width: 1024px) 350px,
+                    ((min-width: 1024px) and (min-resolution: 2dppx)) 700px,
+                    (min-width: 768px) 670px,
+                    ((min-width: 768px) and (min-resolution: 2dppx)) 1340px,
+                    (max-width: 767px) 270px,
+                    ((max-width: 767px) and (min-resolution: 2dppx)) 540px
+                  ">
+                  <img srcset="
+                    ./img/catalog/montage-mobile.jpg 270w,
+                    ./img/catalog/montage-mobile@2x.jpg 540w,
+                    ./img/catalog/montage-tablet.jpg 670w,
+                    ./img/catalog/montage-tablet@2x.jpg 1340w,
+                    ./img/catalog/montage-desk.jpg 350w,
+                    ./img/catalog/montage-desk@2x.jpg 700w
+                  " sizes="
+                    (min-width: 1024px) 350px,
+                    ((min-width: 1024px) and (min-resolution: 2dppx)) 700px,
+                    (min-width: 768px) 670px,
+                    ((min-width: 768px) and (min-resolution: 2dppx)) 1340px,
+                    (max-width: 767px) 270px,
+                    ((max-width: 767px) and (min-resolution: 2dppx)) 540px
+                  " src="./img/catalog/montage-desk.jpg" width="350" height="650" loading="lazy" alt="Центральная часть печатной платы.">
+                </picture>
               </li>
-              <li>
-                <article class="product">
-                  <h2>Комплектующие для светотехники</h2>
-                  <a href="#" aria-label="Перейти на страницу"></a>
-                  <div class="product__inner">
-                    <div>
-                      <svg width="5" height="10">
-                        <use xlink:href="./img/sprite_auto.svg#icon-more"></use>
-                      </svg>
-                    </div>
+              <li class="product">
+                <h2>Комплектующие для светотехники</h2>
+                <a href="#" aria-label="Перейти на страницу"></a>
+                <div class="product__inner">
+                  <div>
+                    <svg width="5" height="10">
+                      <use xlink:href="./img/sprite_auto.svg#icon-more"></use>
+                    </svg>
                   </div>
-                  <picture>
-                    <source type="image/webp" media="(max-width: 767px)" srcset="./img/catalog/accessories-mobile.webp 1x, ./img/catalog/accessories-mobile@2x.webp 2x">
-                    <source type="image/webp" media="(max-width: 1023px)" srcset="./img/catalog/accessories-tablet.webp 1x, ./img/catalog/accessories-tablet@2x.webp 2x">
-                    <source type="image/webp" srcset="./img/catalog/accessories-desk.webp 1x, ./img/catalog/accessories-desk@2x.webp 2x">
-                    <!-- mobile: 1x - 270px; 2x - 540px; tablet: 1x - 670px; 2x - 1340px  desktop: 1x - 350px; 2x - 700px  -->
-                    <img srcset="
-                      ./img/catalog/accessories-mobile.jpg 270w,
-                      ./img/catalog/accessories-mobile@2x.jpg 540w,
-                      ./img/catalog/accessories-tablet.jpg 670w,
-                      ./img/catalog/accessories-tablet@2x.jpg 1340w,
-                      ./img/catalog/accessories-desk.jpg 350w,
-                      ./img/catalog/accessories-desk@2x.jpg 700w
-                    " sizes="
-                      (min-width: 1024px) 350px,
-                      ((min-width: 1024px) and (min-resolution: 2dppx)) 700px,
-                      (min-width: 768px) 670px,
-                      ((min-width: 768px) and (min-resolution: 2dppx)) 1340px,
-                      (max-width: 767px) 270px,
-                      ((max-width: 767px) and (min-resolution: 2dppx)) 540px
-                    " src="./img/catalog/accessories-desk.jpg" width="350" height="650" loading="lazy" alt="Транзисторы и катушка-предохранитель печатной платы.">
-                  </picture>
-                </article>
+                </div>
+                <picture>
+                  <!-- mobile: 1x - 270px; 2x - 540px; tablet: 1x - 670px; 2x - 1340px  desktop: 1x - 350px; 2x - 700px  -->
+                  <source type="image/webp" srcset="
+                    ./img/catalog/accessories-mobile.webp 270w,
+                    ./img/catalog/accessories-mobile@2x.webp 540w,
+                    ./img/catalog/accessories-tablet.webp 670w,
+                    ./img/catalog/accessories-tablet@2x.webp 1340w,
+                    ./img/catalog/accessories-desk.webp 350w,
+                    ./img/catalog/accessories-desk@2x.webp 700w
+                  " sizes="
+                    (min-width: 1024px) 350px,
+                    ((min-width: 1024px) and (min-resolution: 2dppx)) 700px,
+                    (min-width: 768px) 670px,
+                    ((min-width: 768px) and (min-resolution: 2dppx)) 1340px,
+                    (max-width: 767px) 270px,
+                    ((max-width: 767px) and (min-resolution: 2dppx)) 540px
+                  ">
+                  <img srcset="
+                    ./img/catalog/accessories-mobile.jpg 270w,
+                    ./img/catalog/accessories-mobile@2x.jpg 540w,
+                    ./img/catalog/accessories-tablet.jpg 670w,
+                    ./img/catalog/accessories-tablet@2x.jpg 1340w,
+                    ./img/catalog/accessories-desk.jpg 350w,
+                    ./img/catalog/accessories-desk@2x.jpg 700w
+                  " sizes="
+                    (min-width: 1024px) 350px,
+                    ((min-width: 1024px) and (min-resolution: 2dppx)) 700px,
+                    (min-width: 768px) 670px,
+                    ((min-width: 768px) and (min-resolution: 2dppx)) 1340px,
+                    (max-width: 767px) 270px,
+                    ((max-width: 767px) and (min-resolution: 2dppx)) 540px
+                  " src="./img/catalog/accessories-desk.jpg" width="350" height="650" loading="lazy" alt="Транзисторы и катушка-предохранитель печатной платы.">
+                </picture>
               </li>
             </ul>
           </div>
@@ -246,21 +288,16 @@
               <h2>Мы&nbsp;проконсультируем Вас бесплатно</h2>
               <p>Остались вопросы? Задайте&nbsp;их&nbsp;нам!</p>
               <form class="feedback__form" method="get" action="https://echo.htmlacademy.ru" autocomplete="off">
-                <div class="feedback__item feedback__item--right">
-                  <label>
-                    <input id="user-name" type="text" placeholder="Имя" name="userName" required>
-                  </label>
-                </div>
-                <div class="feedback__item">
-                  <label>
-                    <input id="user-phone" class="masked prefixed" data-pattern="+*(***)***-**-**" data-prefix="+7" placeholder="Телефон" name="userPhone" pattern="+7[0-9]{1,10}" required>
-                  </label>
-                </div>
+                <label for="user-name" class="visually-hidden">Введите ваше имя</label>
+                <input id="user-name" type="text" placeholder="Имя" name="userName" required>
+                <label for="user-phone" class="visually-hidden">Введите ваш телефон</label>
+                <input id="user-phone" class="masked prefixed" type="tel" name="userPhone" pattern="\+7[\s(]*\d{3}[)\s]*\d{3}[\s-]?\d{2}[\s-]?\d{2}" data-pattern="+*(***)***-**-**" data-prefix="+7" placeholder="Телефон" required>
+                <label for="user-question" class="visually-hidden">Введите ваш вопрос</label>
                 <textarea id="user-question" name="usertext" cols="30" rows="10" placeholder="Ваш вопрос"></textarea>
                 <div class="feedback__checkbox">
                   <label>
                     <input class="visually-hidden" type="checkbox" name="personalAgree" checked required>
-                    <span>Я&nbsp;согласен на&nbsp;обработку персональных данных</span>
+                    <span>Я&nbsp;согласен на&nbsp;обработку персональных&nbsp;данных</span>
                   </label>
                 </div>
                 <button class="feedback__button" type="submit">Задать вопрос</button>
@@ -320,7 +357,7 @@
             <div class="accordion__item accordion__item--navigation" data-state="is-open">
               <div class="accordion__title">
                 <h3>Разделы сайта</h3>
-                <button class="accordion__toggle" type="button">
+                <button class="accordion__toggle" type="button" data-nojs="no-js">
                   <svg class="accordion__svg" aria-hidden="true" width="15" height="15" role="img">
                     <use class="accordion__icon accordion__icon--close" xlink:href="./img/sprite_auto.svg#icon-accordion-close"></use>
                     <use class="accordion__icon accordion__icon--open" xlink:href="./img/sprite_auto.svg#icon-accordion-open"></use>
@@ -358,7 +395,7 @@
             <div class="accordion__item accordion__item--contacts" data-state="is-open">
               <div class="accordion__title">
                 <h3>Наш офис</h3>
-                <button class="accordion__toggle" type="button">
+                <button class="accordion__toggle" type="button" data-nojs="no-js">
                   <svg class="accordion__svg" aria-hidden="true" width="15" height="15" role="img">
                     <use class="accordion__icon accordion__icon--close" xlink:href="./img/sprite_auto.svg#icon-accordion-close"></use>
                     <use class="accordion__icon accordion__icon--open" xlink:href="./img/sprite_auto.svg#icon-accordion-open"></use>
@@ -391,28 +428,31 @@
 
     <!-- Modal -->
 
-    <div class="modal modal--preload" data-modal="feedback">
+    <div class="modal modal--preload" data-modal="popup-feedback">
       <div class="modal__wrapper">
         <div class="modal__overlay" data-close-modal></div>
         <div class="modal__content">
-          <form class="modal__form" method="get" action="https://echo.htmlacademy.ru" autocomplete="off">
+          <form class="modal__form" method="get" action="https://echo.htmlacademy.ru">
             <fieldset>
               <legend>Закажите звонок</legend>
               <p>Оставьте контакты, мы&nbsp;проконсультируем вас бесплатно в&nbsp;удобное время</p>
-              <label>
-                <input id="userName" type="text" placeholder="Имя" name="userName" autofocus required>
-              </label>
-              <label>
-                <input type="text" class="masked prefixed" data-pattern="+*(***)***-**-**" data-prefix="+7" placeholder="Телефон" name="userPhone" pattern="+7[0-9]{1,10}" required>
-              </label>
-              <textarea name="usertext" cols="30" rows="5" placeholder="Ваш вопрос"></textarea>
-              <button class="modal__button" type="submit">Отправить</button>
+              <label for="userName" class="visually-hidden">Ваше имя</label>
+              <input id="userName" type="text" placeholder="Имя" name="userName" data-focus required>
+
+              <label for="userPhone" class="visually-hidden">Ваш телефон</label>
+              <input id="userPhone" class="masked prefixed" pattern="\+7[\s(]*\d{3}[)\s]*\d{3}[\s-]?\d{2}[\s-]?\d{2}" data-pattern="+*(***)***-**-**" data-prefix="+7" type="tel" placeholder="Телефон" name="userPhone" required>
+
+              <label for="userQuestion" class="visually-hidden">Ваш вопрос</label>
+              <textarea id="userQuestion" name="usertext" cols="30" rows="5" placeholder="Ваш вопрос"></textarea>
+
               <div class="modal__checkbox">
-                <label>
-                  <input class="visually-hidden" type="checkbox" name="personalAgree" checked required>
-                  <span>Я&nbsp;согласен на&nbsp;обработку персональных данных</span>
+                <label for="user-agree">
+                  <input id="user-agree" class="visually-hidden" type="checkbox" name="personalAgree" checked required>
+                  <span>Я&nbsp;согласен на&nbsp;обработку персональных&nbsp;данных</span>
                 </label>
               </div>
+              <button class="modal__button" type="submit">Отправить</button>
+
             </fieldset>
           </form>
           <button class="modal__close-btn btn-reset" type="button" aria-label="Закрыть попап" data-close-modal>

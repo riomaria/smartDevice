@@ -119,6 +119,8 @@
 
 
 .modal__form fieldset {
+  display: flex;
+  flex-direction: column;
   margin: 0;
   padding: 0;
   border: none;
@@ -126,7 +128,7 @@
 
 .modal__form legend {
   max-width: 380px;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
   font-weight: $fw-normal;
   font-size: $fz-pre-large;
   line-height: $lh-pre-large;
@@ -185,7 +187,7 @@
 
 .modal__form textarea {
   height: 155px;
-  margin-bottom: 19px;
+  margin-bottom: 25px;
   padding-top: 26px;
 }
 
@@ -194,7 +196,7 @@
   width: 100%;
   margin: 0;
   margin-bottom: 20px;
-  padding: 16px 15px 15px 15px;
+  padding: 16px 15px 12px 15px;
   font-weight: $fw-bold;
   font-size: $fz-default;
   line-height: $fz-modarate;
@@ -206,6 +208,8 @@
   background-color: $color-black-pearl;
   border: none;
   border-radius: 3px;
+  user-select: none;
+  touch-action: manipulation;
   cursor: pointer;
 
   &:hover,
@@ -226,6 +230,15 @@
     opacity: 0.5;
     cursor: none;
   }
+}
+
+.modal__checkbox {
+  order: 1;
+  position: relative;
+}
+
+.modal__checkbox label {
+  position: absolute;
 }
 
 .modal__checkbox span {
