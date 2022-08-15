@@ -1,7 +1,7 @@
 .feedback {
   position: relative;
-  padding-top: 166px;
-  padding-bottom: 247px;
+  padding-top: 167px;
+  padding-bottom: 248px;
   background: linear-gradient(-41deg, $color-deep-sky-blue 66.4%, $color-cerulean 66.4%);
 
   @include vp-1023 {
@@ -11,7 +11,7 @@
   }
 
   @include vp-767 {
-    padding-bottom: 88px;
+    padding-bottom: 120px;
   }
 }
 
@@ -45,7 +45,7 @@
 .feedback h2 {
   order: 1;
   margin: 0;
-  margin-bottom: 33px;
+  margin-bottom: 32px;
   padding: 0;
   font-weight: $fw-normal;
   font-size: $fz-default;
@@ -70,7 +70,7 @@
   order: 0;
   margin: 0;
   margin-bottom: 15px;
-  margin-left: -3px;
+  margin-left: -4px;
   padding: 0;
   font-weight: $fw-normal;
   font-size: $fz-large;
@@ -80,7 +80,7 @@
 
   @include vp-1023 {
     margin-bottom: 6px;
-    padding-left: 2px;
+    padding-left: 3px;
   }
 
   @include vp-767 {
@@ -93,36 +93,32 @@
 
 .feedback form {
   order: 2;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  column-gap: 30px;
+  row-gap: 20px;
 
   @include vp-767 {
+    display: flex;
     flex-direction: column;
+    row-gap: 0;
   }
 }
 
-.feedback__item {
-  flex: 1 1 46%;
-
-  @include vp-767 {
-    flex: 1 1 auto;
-  }
+.feedback input[type="text"],
+.feedback input[type="tel"],
+.feedback__button,
+.feedback__checkbox {
+  grid-column: span 1;
 }
 
-.feedback__item--right {
-  margin-right: 30px;
-
-  @include vp-767 {
-    margin-right: 0;
-  }
-}
-
-.feedback__item input,
-.feedback__form textarea {
+.feedback input[type="text"],
+.feedback input[type="tel"],
+.feedback textarea {
   display: block;
   width: 100%;
   min-height: 50px;
-  margin-bottom: 20px;
   padding: 15px;
   font-family: inherit;
   color: $color-default-white;
@@ -131,6 +127,10 @@
   background-color: $color-black-pearl--15;
   appearance: textfield;
   cursor: text;
+
+  @include vp-767 {
+    margin-bottom: 20px;
+  }
 
   &::placeholder {
     font-family: inherit;
@@ -158,57 +158,46 @@
   }
 }
 
-.feedback textarea {
-  flex: 1 1 100%;
+.feedback__form textarea {
+  grid-column: span 2;
   height: 155px;
-  margin-bottom: 35px;
-  padding: 25px 15px 15px 15px;
-  color: $color-default-white;
-  border: none;
-  border-radius: 3px;
-  background-color: $color-black-pearl--15;
-  appearance: textfield;
-  cursor: text;
+  margin-bottom: 15px;
+  padding-top: 25px;
+
 
   @include vp-1023 {
     padding-top: 32px;
   }
 
   @include vp-767 {
-    flex: 1 1 auto;
-    height: 180px;
+    min-height: 180px;
     margin-bottom: 30px;
     padding-top: 25px;
   }
 }
 
 .feedback__checkbox {
-  flex: 1 1 45%;
-  order: 1;
   align-self: center;
-  margin-left: -7px;
-  margin-top: 15px;
-
-  @include vp-1023 {
-    flex: 1 1 35%;
-    margin-left: auto;
-    margin-top: 5px;
-    padding-left: 28px;
-  }
+  position: relative;
 
   @include vp-767 {
-    flex: 1 1 auto;
-    margin-top: 0;
-    margin-left: -2px;
-    padding-left: 0;
+    align-self: stretch;
+    order: 1;
   }
+}
+
+.feedback__checkbox label {
+  position: absolute;
 }
 
 .feedback__checkbox span {
   position: relative;
   display: block;
-  margin: 0;
-  padding-left: 33px;
+  margin-top: -7px;
+  padding-right: 10px;
+  padding-left: 35px;
+  min-width: 250px;
+
   font-size: $fz-small;
   line-height: $lh-normal;
   color: $color-white;
@@ -216,8 +205,9 @@
 
   &::before {
     position: absolute;
-    top: 20%;
-    left: 7px;
+    top: 45%;
+    transform: translateY(-50%);
+    left: 10px;
     width: 15px;
     height: 15px;
     background-color: transparent;
@@ -227,27 +217,34 @@
   }
 
   @include vp-1023 {
-    max-width: 93%;
+    min-width: 320px;
+    margin-top: -13px;
+    padding-left: 25px;
+    padding-top: 0;
 
     &::before {
-      top: 24%;
+      top: 45%;
+      left: 0;
     }
   }
 
   @include vp-767 {
     max-width: 100%;
+    margin-top: 0;
     padding-right: 0;
+    padding-left: 30px;
 
     &::before {
-      top: 20%;
+      left: 5px;
     }
   }
 }
 
 .feedback__checkbox input[type="checkbox"]:checked + span::after {
   position: absolute;
-  top: 30%;
-  left: 11px;
+  top: 43%;
+  left: 13px;
+  transform: translateY(-50%);
   width: 7px;
   height: 7px;
   background-image: url("../../img/svg/icon-check.svg");
@@ -256,12 +253,12 @@
   content: "";
 
   @include vp-1023 {
-    top: 35%;
+    top: 43%;
+    left: 3px;
   }
 
   @include vp-767 {
-    top: 34%;
-    left: 10px;
+    left: 8px;
   }
 }
 
@@ -285,13 +282,13 @@
 }
 
 .feedback__button {
-  align-self: center;
-  flex: 1 1 40%;
+  grid-column: 1/2;
+  grid-row: 3/4;
+  justify-self: start;
   display: block;
   min-width: 265px;
   margin: 0;
-  margin-right: 50px;
-  padding: 13px 15px 13px 15px;
+  padding: 14px 15px 13px 15px;
   font-weight: $fw-bold;
   font-size: inherit;
   line-height: $lh-modarate;
@@ -303,6 +300,8 @@
   border: none;
   border-radius: 3px;
   background-color: $color-black-pearl;
+  user-select: none;
+  touch-action: manipulation;
   cursor: pointer;
 
   &:hover,
@@ -325,17 +324,13 @@
   }
 
   @include vp-1023 {
-    flex: 1 1 225px;
-    max-width: 39%;
     padding: 16px 15px 10px 15px;
   }
 
   @include vp-767 {
-    flex: 1 1 auto;
     min-width: 270px;
     max-width: 100%;
     width: 100%;
-    margin-right: 0;
     margin-bottom: 25px;
   }
 }

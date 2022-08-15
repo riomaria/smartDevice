@@ -11,27 +11,57 @@ window.addEventListener('DOMContentLoaded', () => {
   iosVhFix();
 
   // ---------------------------------
-  // Modal focus
+  // Validate phone feedback and modal
 
-  const inputModal = document.querySelector('.modal__form input');
-  const popupButton = document.querySelector('.aside-info a');
+  const phoneInputs = document.querySelectorAll('form input[type="tel"]');
 
-  popupButton.addEventListener('click', (evt) => {
-    evt.preventDefault();
+  const validatePhone = (element) => {
+    element.setCustomValidity('');
+    element.checkValidity();
+  };
 
-    inputModal.focus();
+  const messageValidate = (element) => {
+    if (element.value === '') {
+      element.setCustomValidity('Введите номер телефона в формате: +7(XXX)XXX-XX-XX');
+    } else {
+      element.setCustomValidity('Введите телефон по формату: +7(XXX)XXX-XX-XX');
+    }
+  };
+
+  phoneInputs.forEach((item) => {
+    item.addEventListener('input', () => {
+      validatePhone(item);
+    });
   });
+
+  phoneInputs.forEach((item) => {
+    item.addEventListener('invalid', () => {
+      messageValidate(item);
+    });
+  });
+
+  // ---------------------------------
+  // No js aside-info link
+
+  const asideButton = document.querySelector('.aside-info a');
+
+  asideButton.href = '#';
 
   // ---------------------------------
   // Submit default
 
-  const submitForm = document.querySelector('.feedback__form');
-  const userName = submitForm.querySelector('#user-name');
-  const userPhone = submitForm.querySelector('#user-phone');
-  const userQuestion = submitForm.querySelector('#user-question');
+  const feedbackSubmit = document.querySelector('.feedback__form');
+  const modalSubmit = document.querySelector('.modal__form');
+  const feedbackUserName = '#user-name';
+  const feedbackUserPhone = '#user-phone';
+  const popupUserName = '#userName';
+  const popupUserPhone = '#userPhone';
 
-  submitForm.addEventListener('submit', (evt) => {
-    evt.preventDefault();
+
+  const setStorage = (element, name, tel) => {
+    const userName = element.querySelector(name);
+    const userPhone = element.querySelector(tel);
+    const userQuestion = element.querySelector('textarea');
 
     localStorage.setItem('userName', userName.value);
     localStorage.setItem('userPhone', userPhone.value);
@@ -39,11 +69,22 @@ window.addEventListener('DOMContentLoaded', () => {
     userName.value = '';
     userPhone.value = '';
     userQuestion.value = '';
+  };
+
+  feedbackSubmit.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+    setStorage(feedbackSubmit, feedbackUserName, feedbackUserPhone);
+  });
+
+  modalSubmit.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+    setStorage(modalSubmit, popupUserName, popupUserPhone);
   });
 
   // Smooth navigation
 
   const anchorMenu = document.querySelector('.hero a[href^="#"]');
+  const inputFeedback = document.querySelector('.feedback__form input');
 
   anchorMenu.addEventListener('click', (evt) => {
     evt.preventDefault();
@@ -52,6 +93,7 @@ window.addEventListener('DOMContentLoaded', () => {
       behavior: 'smooth',
       block: 'start',
     });
+    inputFeedback.focus();
   });
 
   // ---------------------------------
@@ -136,6 +178,8 @@ window.addEventListener('DOMContentLoaded', () => {
   const itemCompany = document.querySelector('.company__inner');
   const buttonCompany = itemCompany.querySelector('.company button');
 
+  buttonCompany.removeAttribute('data-nojs');
+
   itemCompany.setAttribute('data-company', 'is-close');
 
   buttonCompany.addEventListener('click', () => {
@@ -172,11 +216,13 @@ window.addEventListener('DOMContentLoaded', () => {
   // Accordion open
 
   const itemAccordion = document.querySelectorAll('.accordion__item');
-  // const mediaMobile = 767;
 
   const removeState = () => {
     itemAccordion.forEach((item) => {
+      const toggle = item.querySelector('.accordion__toggle');
+
       item.removeAttribute('data-state');
+      toggle.removeAttribute('data-nojs');
     });
   };
 

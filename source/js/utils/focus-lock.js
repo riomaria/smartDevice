@@ -67,6 +67,7 @@ export class FocusLock {
     if (startElement && startFocus) {
       startElement.focus();
     }
+
     document.addEventListener('keydown', this._documentKeydownHandler);
   }
 
