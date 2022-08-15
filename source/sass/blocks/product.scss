@@ -33,15 +33,9 @@
   }
 }
 
-.product > a {
-  position: absolute;
-  top: 0;
-  left: 0;
+.product a {
   display: block;
-  width: 100%;
-  height: 100%;
   text-decoration: none;
-  z-index: 5;
   cursor: pointer;
 }
 
@@ -68,7 +62,7 @@
   }
 }
 
-.product__inner div {
+.product div {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -84,7 +78,7 @@
   }
 }
 
-.product__inner svg {
+.product svg {
   position: absolute;
   top: 51%;
   left: 50%;
