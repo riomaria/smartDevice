@@ -1942,7 +1942,7 @@ button,
   transform: translateY(-50%);
   width: 7px;
   height: 7px;
-  background-image: url("../../img/svg/icon-check.svg");
+  background-image: url("../img/svg/icon-check.svg");
   background-position: center;
   background-repeat: no-repeat;
   content: "";
