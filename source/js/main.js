@@ -83,7 +83,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // Smooth navigation
 
-  const anchorMenu = document.querySelector('.hero a[href^="#"]');
+  const anchorMenu = document.querySelector('.hero a');
   const inputFeedback = document.querySelector('.feedback__form input');
 
   anchorMenu.addEventListener('click', (evt) => {
@@ -93,7 +93,9 @@ window.addEventListener('DOMContentLoaded', () => {
       behavior: 'smooth',
       block: 'start',
     });
-    inputFeedback.focus();
+    setTimeout(function () {
+      inputFeedback.focus();
+    }, 700);
   });
 
   // ---------------------------------

@@ -74,6 +74,7 @@ const copy = () => {
     'source/**.html',
     'source/fonts/**',
     'source/img/**',
+    'source/favicon.ico',
     'source/favicon/**',
     'source/manifest.webmanifest',
   ], {
